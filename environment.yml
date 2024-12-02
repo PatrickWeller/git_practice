@@ -3,5 +3,5 @@ channels:
   - defaults
 dependencies:
   - python=3.12
-  - pytest
   - pip
+    - -r requirements.txt
