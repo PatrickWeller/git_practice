@@ -1,0 +1,31 @@
+name: Run Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Install Miniconda
+    - name: Set up Miniconda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: "PanelPal"
+        environment-file: "environment.yml"  # Update with the path to your Conda environment file if you have one
+        auto-activate-base: false
+
+    # Install dependencies not included in the Conda environment
+    - name: Install extra dependencies
+      run: |
+        pip install pytest
+
+    # Run tests
+    - name: Run tests
+      run: pytest test/
