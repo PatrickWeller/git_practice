@@ -35,8 +35,3 @@ jobs:
         coverage run -m pytest test/
         coverage report -m
         coverage html
-
-    - name: Upload coverage results to GitHub
-    run: |
-      coverage xml
-      curl -s https://img.shield.io/coverage/gh/PatrickWeller/git_practice/main.svg
