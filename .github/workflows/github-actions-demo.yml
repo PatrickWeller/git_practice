@@ -24,18 +24,12 @@ jobs:
       run: |
         conda env create --file environment.yml
 
-    # Initialize Conda for bash and activate the environment
+    # Initialize Conda for bash and activate the environment then run tests
     - name: Activate Conda environment
       shell: bash
       run: |
         echo "Setting up Conda for bash"
         conda init bash
         source ~/.bashrc
-        conda activate PanelPal
-
-    # Run tests
-    - name: Run tests
-      shell: bash
-      run: |
         conda activate PanelPal
         pytest test/
