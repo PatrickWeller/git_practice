@@ -17,9 +17,16 @@ jobs:
     - name: Set up Miniconda
       uses: conda-incubator/setup-miniconda@v2
       with:
-        activate-environment: "PanelPal"
-        environment-file: "environment.yml"  # Update with the path to your Conda environment file if you have one
         auto-activate-base: false
+        
+    # Created the Conda environment
+    - name: Create Conda environment
+      run: |
+        conda env create --file environment.yml
+
+    # Activate the Conda environment
+    - name: Activate environment
+      run: source activate PanelPal
 
     # Install dependencies not included in the Conda environment
     - name: Install extra dependencies
